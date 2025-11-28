@@ -1,0 +1,14 @@
+resale_flat:
+  target: dev
+  outputs:
+    dev:
+      dataset: resale
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /home/shpang/.keys/pizza-skxw-ffc7e7756691.json # Use your path of key file
+      location: US
+      method: service-account
+      priority: interactive
+      project: "pizza-skxw"
+      threads: 1
+      type: bigquery

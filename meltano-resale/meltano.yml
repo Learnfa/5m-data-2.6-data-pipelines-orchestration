@@ -1,0 +1,33 @@
+version: 1
+default_environment: dev
+project_id: 7cc1a719-2586-4e60-81fb-31e42206be5a
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-postgres
+    variant: meltanolabs
+    pip_url: meltanolabs-tap-postgres
+    config:
+      database: postgres
+      filter_schemas:
+      - public
+      host: aws-1-ap-northeast-2.pooler.supabase.com
+      port: 5432
+      user: postgres.kahgcnexowsyuvtllvcn
+    select:
+    - public-resale_flat_prices_from_jan_2017.*
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    config:
+      credentials_path: /home/shpang/.keys/pizza-skxw-ffc7e7756691.json
+      dataset: resale
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      method: batch_job
+      project: pizza-skxw

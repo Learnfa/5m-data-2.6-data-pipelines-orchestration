@@ -75,6 +75,11 @@ To add the extractor to our project, run (make sure you are in the `meltano-inge
 meltano add extractor tap-github
 ```
 
+#### note: if need to redo, remove it
+```bash
+meltano remove extractor tap-github
+```
+
 Next, configure the extractor by running:
 
 ```bash
